@@ -1,44 +1,68 @@
-import React from "react";
+import Image from "next/image";
+import { useState } from "react";
+
+import Logo from "@/images/build1.png";
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <header className="text-gray-600 body-font">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <div className="container mx-auto flex justify-between p-5 flex-col md:flex-row items-center">
         <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span className="ml-3 text-xl">Tailblocks</span>
+        <Image src={Logo} alt="next js alt" width={250} height={100} layout="responsive"/>
+          <span className=" text-xl">BuildPc</span>
         </a>
-        <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-          <a className="mr-5 hover:text-gray-900">First Link</a>
-          <a className="mr-5 hover:text-gray-900">Second Link</a>
-          <a className="mr-5 hover:text-gray-900">Third Link</a>
-          <a className="mr-5 hover:text-gray-900">Fourth Link</a>
-        </nav>
-        <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-          Button
+
+        <button
+          className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 md:hidden"
+          onClick={handleMobileMenuToggle}
+        >
+          {/* Hamburger Icon */}
           <svg
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            className="w-4 h-4 ml-1"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            className={`w-6 h-6 ml-1 ${isMobileMenuOpen ? "hidden" : "block"}`}
             viewBox="0 0 24 24"
           >
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
+            <path d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+
+          {/* Close Icon */}
+          <svg
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            className={`w-6 h-6 ml-1 ${isMobileMenuOpen ? "block" : "hidden"}`}
+            viewBox="0 0 24 24"
+          >
+            <path d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
+
+        <div
+          className={`md:flex flex-grow items-center ${
+            isMobileMenuOpen ? "block" : "hidden"
+          }`}
+        >
+          <nav className="md:ml-auto md:flex flex-wrap items-center text-base justify-center">
+            <a className="mr-5 hover:text-gray-900">First Link</a>
+            <a className="mr-5 hover:text-gray-900">Second Link</a>
+            <a className="mr-5 hover:text-gray-900">Third Link</a>
+            <a className="mr-5 hover:text-gray-900">Fourth Link</a>
+          </nav>
+          <button className="inline-flex items-center bg-[#6d90e9] text-white shadow-sm border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0">Pc Build
+          </button>
+        </div>
       </div>
     </header>
   );
