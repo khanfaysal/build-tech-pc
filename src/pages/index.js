@@ -1,9 +1,11 @@
 import RootLayout from "@/components/Layout/RootLayout";
+import AllProducts from "@/components/UI/AllProducts";
 
-const HomePage = () => {
+const HomePage = ({allProducts}) => {
+  console.log("data from home", allProducts)
   return (
     <div>
-      <h1 className="text-6xl flex items-center justify-center h-full">Home Page</h1>
+      <AllProducts allProducts = {allProducts} />
     </div>
   );
 };
@@ -16,4 +18,16 @@ HomePage.getLayout = function getLayout(page) {
       {page}
     </RootLayout>
   )
+}
+
+export const getStaticProps = async () => {
+
+  const res = await fetch("http://localhost:5000/products");
+  const data = await res.json();
+  
+  return {
+    props: {
+      allProducts: data,
+    }
+  }
 }
