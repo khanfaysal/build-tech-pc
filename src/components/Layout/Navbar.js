@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import Logo from "@/images/build1.png";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -10,6 +12,11 @@ const Navbar = () => {
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const router = useRouter();
+  const HandlePcBuilderRedirect = () => {
+    router.push("/pc_builder");
+  }
 
   const navItems = [
     {
@@ -53,7 +60,7 @@ const Navbar = () => {
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex justify-between p-5 flex-col md:flex-row items-center">
-        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <Link href="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <Image
             src={Logo}
             alt="next js alt"
@@ -62,7 +69,7 @@ const Navbar = () => {
             layout="responsive"
           />
           <span className="text-xl">BuildPc</span>
-        </a>
+        </Link>
 
         <button
           className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 md:hidden"
@@ -105,8 +112,10 @@ const Navbar = () => {
               <NavItem key={index} item={item} />
             ))}
           </nav>
-          <button className="inline-flex items-center bg-[#6d90e9] text-white shadow-sm border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0">PC Builder
-          </button>
+         
+            <button onClick={HandlePcBuilderRedirect} className="inline-flex items-center bg-[#6d90e9] text-white shadow-sm border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0">PC Builder
+            </button>
+          
         </div>
       </div>
     </header>

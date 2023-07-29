@@ -15,37 +15,33 @@ const ProductsDetailsPage = ({ products }) => {
   } = products;
   return (
     <div>
-      {/* <h1>{products?.productName}</h1>
-            <p>{products?._id.toString()}</p> */}
-
-      <div className="p-4 md:w-full">
-        <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden flex">
+      <div className="p-4 md:w-10/12 mx-auto">
+        <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden flex flex-col md:flex-row">
           {/* Product Image (Left Side) */}
-          <div className="w-1/3">
+          <div className="md:w-6/12">
             {/* <Image
-                      src={image}
-                      alt={productName}
-                      width={250}
-                      height={250}
-                      layout="responsive"
-                    /> */}
+        src={image}
+        alt={productName}
+        width={250}
+        height={250}
+        layout="responsive"
+      /> */}
             <h2>fdfdsf</h2>
           </div>
 
           {/* Product Details (Right Side) */}
-          <div className="p-6 flex flex-col justify-between w-2/3">
+          <div className="p-6 flex flex-col justify-between md:w-6/12">
             <div>
               <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                 {category}
               </h2>
-              <div className="flex justify-between">
-                <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                  {productName}
-                </h1>
-                <p className="text-lg font-bold text-gray-900">
-                  ${price.toFixed(2)}
-                </p>
-              </div>
+              <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+                {productName}
+              </h1>
+              <p className="text-lg font-bold text-gray-900">
+                ${price.toFixed(2)}
+              </p>
+
               <div className="flex items-center mb-4">
                 <span className="text-indigo-500 inline-flex items-center mr-3">
                   Individual Rating: {individualRating}
@@ -105,18 +101,6 @@ ProductsDetailsPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
-// export const getStaticPaths = async () => {
-//     const res = await fetch("http://localhost:5000/products");
-//     const products = await res.json();
-//     console.log(typeof products, "prooooooooo")
-
-//     const paths = products?.data?.map((product) => ({
-//     params: { productsId: product._id.toString() },
-//   }))
-
-//      return { paths, fallback: false }
-// }
-
 export const getStaticPaths = async () => {
   try {
     const res = await fetch("http://localhost:5000/products");
@@ -134,17 +118,6 @@ export const getStaticPaths = async () => {
   }
 };
 
-// export const getStaticProps = async(context) => {
-//     const {params} = context;
-//     const res = await fetch(`http://localhost:5000/products/${params.productsId}`);
-//     const data = await res.json();
-//     console.log("data details", data)
-//     return {
-//         props: {
-//             products: data
-//         }
-//     }
-// }
 export const getStaticProps = async (context) => {
   try {
     const { params } = context;
