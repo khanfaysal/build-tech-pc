@@ -1,3 +1,4 @@
+// Navbar.js
 import Image from "next/image";
 import { useState } from "react";
 import Logo from "@/images/build1.png";
@@ -5,31 +6,80 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const router = useRouter();
+
   const HandlePcBuilderRedirect = () => {
     router.push("/pc_builder");
   };
 
   const navItems = [
     {
-      name: "Components",
+      displayName: "Components", 
       subMenu: [
-        { name: "CPU / Processor", link: "#" },
-        { name: "Motherboard", link: "#" },
-        { name: "RAM", link: "#" },
-        { name: "Power Supply Unit", link: "#" },
-        { name: "Storage Device", link: "#" },
-        { name: "Monitor", link: "#" },
-        { name: "Others", link: "#" },
+        { name: "Processor", link: "Processor" },
+        { name: "Motherboard", link: "Motherboard" },
+        { name: "RAM", link: "RAM" },
+        { name: "Power Supply Unit", link: "Power Supply Unit" },
+        { name: "Storage Device", link: "Storage Device" },
+        { name: "Monitor", link: "Monitor" },
+        { name: "Others", link: "Others" },
       ],
-    }
+    },
   ];
+
+  const NavItem = ({ item, onClick }) => {
+    const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+
+    const handleSubMenuToggle = () => {
+      setSubMenuOpen(!isSubMenuOpen);
+    };
+
+    const handleNavigation = (subMenu) => {
+      router.push(`/products-category?category=${subMenu.name}`);
+    }
+
+    return (
+      <div className="relative group pb-2">
+        <a
+          href="#"
+          className="mr-5 hover:text-gray-900 cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            handleSubMenuToggle();
+          }}
+        >
+          {item.displayName} {/* Use the displayName property for the main category */}
+        </a>
+
+        {item.subMenu && isSubMenuOpen && (
+          <ul className="z-10 bg-[#6d90e9] text-white p-2 border rounded-sm transform scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32">
+            {item.subMenu.map((subItem, index) => (
+              <div key={index}>
+                <a
+                  href="#"
+                  className="hover:text-gray-900 cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // onClick(subItem);
+                    setSubMenuOpen(false);
+                    handleNavigation(subItem)
+                  }}
+                >
+                  {subItem.name} {/* Use the name property for the subMenu items */}
+                </a>
+              </div>
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  };
 
   return (
     <header className="text-gray-600 body-font">
@@ -86,7 +136,7 @@ const Navbar = () => {
         >
           <nav className="py-4 md:ml-auto md:flex flex-wrap items-center text-base justify-center">
             {navItems.map((item, index) => (
-              <NavItem key={index} item={item} />
+              <NavItem key={index} item={item} onClick={() => handleNavItemClicked(item)} />
             ))}
           </nav>
 
@@ -99,37 +149,6 @@ const Navbar = () => {
         </div>
       </div>
     </header>
-  );
-};
-
-const NavItem = ({ item }) => {
-  const [isSubMenuOpen, setSubMenuOpen] = useState(false);
-
-  const handleSubMenuToggle = () => {
-    setSubMenuOpen(!isSubMenuOpen);
-  };
-
-  return (
-    <div className="relative group pb-2">
-      <a
-        className="mr-5 hover:text-gray-900 cursor-pointer"
-        href={item.link}
-        onClick={(e) => {
-          e.preventDefault(); // Prevent the default link behavior
-          handleSubMenuToggle();
-        }}
-      >
-        {item.name}
-      </a>
-
-      {item.subMenu && isSubMenuOpen && (
-        <ul className="z-10 bg-[#6d90e9] text-white p-2 border rounded-sm transform scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32">
-          {item.subMenu.map((subItem, index) => (
-            <NavItem key={index} item={subItem} />
-          ))}
-        </ul>
-      )}
-    </div>
   );
 };
 
