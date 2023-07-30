@@ -2,11 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 const AllProducts = ({ allProducts }) => {
+  // Function to get 6 random products from the array
+  const getRandomProducts = (arr, num) => {
+    const shuffled = arr.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+  };
+
+  // Check if allProducts is valid and has data
   if (!allProducts || !allProducts.data || allProducts.data.length === 0) {
     return <p>No products found.</p>;
   }
 
-  const products = allProducts.data; // Destructure the array of products
+  const products = getRandomProducts(allProducts.data, 6); // Get 6 random products
 
   return (
     <section className="text-gray-600 body-font">
@@ -47,39 +54,13 @@ const AllProducts = ({ allProducts }) => {
                         ${price.toFixed(2)}
                       </p>
                     </div>
-                    {/* <p className="leading-relaxed mb-3">
-                    {description}
-                  </p> */}
-                    {/* <div className="mb-4">
-                    <h3 className="text-gray-600 font-medium mb-2">Key Features:</h3>
-                    <ul className="list-disc pl-6">
-                      {Object.entries(keyFeatures).map(([key, value]) => (
-                        <li key={key}>
-                          {key}: {value}
-                        </li>
-                      ))}
-                    </ul>
-                  </div> */}
+
                     <div className="flex items-center mb-4">
                       <span className="text-indigo-500 inline-flex items-center mr-3">
                         Individual Rating: {individualRating}
                       </span>
-                      {/* <span className="text-gray-400 inline-flex items-center">
-                      Average Rating: {averageRating}
-                    </span> */}
                     </div>
-                    {/* <h3 className="text-gray-600 font-medium mb-2">Reviews:</h3>
-                  {reviews.map((review, index) => (
-                    <div key={index} className="mb-4">
-                      <p className="text-gray-800">
-                        Username: {review.username}
-                      </p>
-                      <p className="text-gray-800">
-                        Rating: {review.rating} out of 5 stars
-                      </p>
-                      <p className="text-gray-800">Comment: {review.comment}</p>
-                    </div>
-                  ))} */}
+
                     <p
                       className={`text-sm ${
                         status === "In Stock"

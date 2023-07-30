@@ -1,6 +1,8 @@
 import RootLayout from "@/components/Layout/RootLayout";
+// import Image from "next/image";
 
 const ProductsDetailsPage = ({ products }) => {
+  console.log("products", products)
   const {
     image,
     productName,
