@@ -138,209 +138,225 @@
 
 
 
-// const ramData = [
-//   {
-//     "_id": { "$oid": "64c393fbdfde08a1c25f8927" },
-//     "image": "https://example.com/ram1-image.jpg",
-//     "productName": "RAM Model X",
-//     "category": "RAM",
-//     "status": "In Stock",
-//     "price": 79.99,
-//     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget...",
-//     "keyFeatures": {
-//       "brand": "Brand R",
-//       "model": "Model R123",
-//       "specification": "High-performance RAM",
-//       "capacity": "8GB",
-//       "type": "DDR4",
-//       "speed": "2400 MHz",
-//       "CASLatency": "16",
-//       "color": "Black",
-//       "RGB": "No"
-//     },
-//     "individualRating": 4.5,
-//     "averageRating": 4.6,
-//     "reviews": [
-//       {
-//         "username": "RAMMaster",
-//         "rating": 5,
-//         "comment": "Fast and reliable RAM for gaming."
-//       },
-//       {
-//         "username": "TechEnthusiast",
-//         "rating": 4,
-//         "comment": "Good value for money."
-//       }
-//     ]
-//   },
-//   {
-//     "_id": { "$oid": "64c393fbdfde08a1c25f8928" },
-//     "image": "https://example.com/ram2-image.jpg",
-//     "productName": "RAM Model Y",
-//     "category": "RAM",
-//     "status": "In Stock",
-//     "price": 129.99,
-//     "description": "Top-of-the-line RAM with impressive speeds.",
-//     "keyFeatures": {
-//       "brand": "Brand S",
-//       "model": "Model S789",
-//       "specification": "High-performance RAM",
-//       "capacity": "16GB",
-//       "type": "DDR4",
-//       "speed": "3200 MHz",
-//       "CASLatency": "18",
-//       "color": "White",
-//       "RGB": "Yes"
-//     },
-//     "individualRating": 4.8,
-//     "averageRating": 4.9,
-//     "reviews": [
-//       {
-//         "username": "RAMExpert",
-//         "rating": 5,
-//         "comment": "Impressive speeds and low latency make this RAM a great choice."
-//       },
-//       {
-//         "username": "TechReviewer",
-//         "rating": 4.5,
-//         "comment": "Beautiful design with RGB lighting."
-//       }
-//     ]
-//   },
-//   {
-//     "_id": { "$oid": "64c393fbdfde08a1c25f8929" },
-//     "image": "https://example.com/ram3-image.jpg",
-//     "productName": "RAM Model Z",
-//     "category": "RAM",
-//     "status": "Out of Stock",
-//     "price": 189.99,
-//     "description": "High-capacity RAM for demanding applications.",
-//     "keyFeatures": {
-//       "brand": "Brand T",
-//       "model": "Model T456",
-//       "specification": "High-performance RAM",
-//       "capacity": "32GB",
-//       "type": "DDR4",
-//       "speed": "3600 MHz",
-//       "CASLatency": "16",
-//       "color": "Black",
-//       "RGB": "Yes"
-//     },
-//     "individualRating": 4.2,
-//     "averageRating": 4.1,
-//     "reviews": [
-//       {
-//         "username": "RAMUser123",
-//         "rating": 4,
-//         "comment": "Good performance, but a bit expensive."
-//       },
-//       {
-//         "username": "CasualRAMUser",
-//         "rating": 4.5,
-//         "comment": "Nice aesthetics with RGB lighting."
-//       }
-//     ]
-//   },
-//   {
-//     "_id": { "$oid": "64c393fbdfde08a1c25f8930" },
-//     "image": "https://example.com/ram4-image.jpg",
-//     "productName": "RAM Model A",
-//     "category": "RAM",
-//     "status": "In Stock",
-//     "price": 59.99,
-//     "description": "Budget-friendly RAM for basic computing needs.",
-//     "keyFeatures": {
-//       "brand": "Brand U",
-//       "model": "Model A123",
-//       "specification": "Standard RAM",
-//       "capacity": "4GB",
-//       "type": "DDR3",
-//       "speed": "1600 MHz",
-//       "CASLatency": "11",
-//       "color": "Green",
-//       "RGB": "No"
-//     },
-//     "individualRating": 3.5,
-//     "averageRating": 3.2,
-//     "reviews": [
-//       {
-//         "username": "RAMBeginner",
-//         "rating": 3,
-//         "comment": "Decent RAM for everyday tasks."
-//       },
-//       {
-//         "username": "CasualUser321",
-//         "rating": 3.5,
-//         "comment": "Affordable option but limited capacity."
-//       }
-//     ]
-//   },
-//   {
-//     "_id": { "$oid": "64c393fbdfde08a1c25f8931" },
-//     "image": "https://example.com/ram5-image.jpg",
-//     "productName": "RAM Model B",
-//     "category": "RAM",
-//     "status": "In Stock",
-//     "price": 99.99,
-//     "description": "Performance-oriented RAM with RGB lighting.",
-//     "keyFeatures": {
-//       "brand": "Brand V",
-//       "model": "Model B789",
-//       "specification": "High-performance RAM",
-//       "capacity": "16GB",
-//       "type": "DDR4",
-//       "speed": "3000 MHz",
-//       "CASLatency": "15",
-//       "color": "Black",
-//       "RGB": "Yes"
-//     },
-//     "individualRating": 4.6,
-//     "averageRating": 4.7,
-//     "reviews": [
-//       {
-//         "username": "RAMGuru",
-//         "rating": 5,
-//         "comment": "Exceptional performance and stunning RGB effects."
-//       },
-//       {
-//         "username": "TechGeek123",
-//         "rating": 4.5,
-//         "comment": "Great RAM, but a bit pricey."
-//       }
-//     ]
-//   },
-//   {
-//     "_id": { "$oid": "64c393fbdfde08a1c25f8932" },
-//     "image": "https://example.com/ram6-image.jpg",
-//     "productName": "RAM Model C",
-//     "category": "RAM",
-//     "status": "In Stock",
-//     "price": 149.99,
-//     "description": "High-capacity RAM with overclocking capabilities.",
-//     "keyFeatures": {
-//       "brand": "Brand W",
-//       "model": "Model C456",
-//       "specification": "High-performance RAM",
-//       "capacity": "32GB",
-//       "type": "DDR4",
-//       "speed": "3200 MHz",
-//       "CASLatency": "14",
-//       "color": "White",
-//       "RGB": "Yes"
-//     },
-//     "individualRating": 4.8,
-//     "averageRating": 4.9,
-//     "reviews": [
-//       {
-//         "username": "RAMExpert456",
-//         "rating": 5,
-//         "comment": "Excellent RAM for overclocking and heavy tasks."
-//       },
-//       {
-//         "username": "TechSavvy789",
-//         "rating": 4.5,
-//         "comment": "Beautiful design with high-speed performance."
-//       }
-//     ]
-//   }
-// ];
+const motherboardData = [
+    // Motherboard object 1 with reviews
+    {
+      "_id": { "$oid": "64c393fbdfde08a1c25f8933" },
+      "image": "https://example.com/motherboard1-image.jpg",
+      "productName": "Motherboard Model X",
+      "category": "Motherboard",
+      "status": "In Stock",
+      "price": 189.99,
+      "description": "High-performance motherboard for gaming builds.",
+      "keyFeatures": {
+        "brand": "Brand M",
+        "model": "Model M123",
+        "socket": "AM4",
+        "chipset": "B550",
+        "memorySlots": "4",
+        "maxMemory": "128GB",
+        "formFactor": "ATX",
+        "USBPorts": "6",
+        "PCIeSlots": "2",
+        "SATAPorts": "6",
+        "M2Slots": "2",
+        "RGB": "Yes"
+      },
+      "individualRating": 4.7,
+      "averageRating": 4.8,
+      "reviews": [
+        {
+          "username": "User123",
+          "rating": 4.5,
+          "comment": "Great motherboard for gaming enthusiasts."
+        },
+        {
+          "username": "Gamer456",
+          "rating": 5,
+          "comment": "Superb performance and overclocking capabilities."
+        },
+        {
+          "username": "TechGeek",
+          "rating": 4,
+          "comment": "Solid build quality and feature-rich."
+        }
+      ]
+    },
+    // Motherboard object 2 without reviews
+    {
+      "_id": { "$oid": "64c393fbdfde08a1c25f8934" },
+      "image": "https://example.com/motherboard2-image.jpg",
+      "productName": "Motherboard Model Y",
+      "category": "Motherboard",
+      "status": "Out of Stock",
+      "price": 249.99,
+      "description": "High-end motherboard for professional workstations.",
+      "keyFeatures": {
+        "brand": "Brand N",
+        "model": "Model N789",
+        "socket": "LGA1200",
+        "chipset": "Z590",
+        "memorySlots": "8",
+        "maxMemory": "256GB",
+        "formFactor": "EATX",
+        "USBPorts": "8",
+        "PCIeSlots": "4",
+        "SATAPorts": "8",
+        "M2Slots": "3",
+        "RGB": "No"
+      },
+      "individualRating": 4.9,
+      "averageRating": 4.9,
+      "reviews": []
+    }
+  ];
+  
+  const powerSupplyData = [
+    // Power supply object 1 without reviews
+    {
+      "_id": { "$oid": "64c393fbdfde08a1c25f8935" },
+      "image": "https://example.com/powersupply1-image.jpg",
+      "productName": "Power Supply Model X",
+      "category": "Power Supply",
+      "status": "In Stock",
+      "price": 99.99,
+      "description": "Reliable power supply for mid-range systems.",
+      "keyFeatures": {
+        "brand": "Brand P",
+        "model": "Model P123",
+        "wattage": "650W",
+        "efficiency": "80 Plus Bronze",
+        "modular": "Semi",
+        "fanSize": "120mm",
+        "outputVoltage": "12V",
+        "protections": "Overvoltage, Overcurrent, Short Circuit",
+        "connectors": "ATX, PCIe, SATA, Molex",
+        "RGB": "No"
+      },
+      "individualRating": 4.4,
+      "averageRating": 4.3,
+      "reviews": []
+    },
+    // Power supply object 2 with reviews
+    {
+      "_id": { "$oid": "64c393fbdfde08a1c25f8936" },
+      "image": "https://example.com/powersupply2-image.jpg",
+      "productName": "Power Supply Model Y",
+      "category": "Power Supply",
+      "status": "In Stock",
+      "price": 159.99,
+      "description": "High-wattage power supply for enthusiast systems.",
+      "keyFeatures": {
+        "brand": "Brand Q",
+        "model": "Model Q789",
+        "wattage": "850W",
+        "efficiency": "80 Plus Gold",
+        "modular": "Full",
+        "fanSize": "140mm",
+        "outputVoltage": "12V",
+        "protections": "Overvoltage, Overcurrent, Short Circuit, Overtemperature",
+        "connectors": "ATX, EPS, PCIe, SATA, Molex",
+        "RGB": "Yes"
+      },
+      "individualRating": 4.8,
+      "averageRating": 4.7,
+      "reviews": [
+        {
+          "username": "User789",
+          "rating": 4.5,
+          "comment": "Delivers stable power for high-end systems."
+        },
+        {
+          "username": "PCEnthusiast",
+          "rating": 5,
+          "comment": "Great choice for extreme gaming setups."
+        }
+      ]
+    }
+  ];
+  
+  const storageDeviceData = [
+    // Storage device object 1 with reviews
+    {
+      "_id": { "$oid": "64c393fbdfde08a1c25f8937" },
+      "image": "https://example.com/storage1-image.jpg",
+      "productName": "Storage Device Model X",
+      "category": "Storage Device",
+      "status": "In Stock",
+      "price": 89.99,
+      "description": "High-speed SSD for faster data access.",
+      "keyFeatures": {
+        "brand": "Brand S",
+        "model": "Model S123",
+        "capacity": "500GB",
+        "interface": "NVMe M.2",
+        "readSpeed": "3500 MB/s",
+        "writeSpeed": "2500 MB/s",
+        "formFactor": "M.2 2280",
+        "MTBF": "1.5 million hours",
+        "endurance": "400 TBW",
+        "encryption": "AES 256",
+        "RGB": "No"
+      },
+      "individualRating": 4.5,
+      "averageRating": 4.4,
+      "reviews": [
+        {
+          "username": "User456",
+          "rating": 4.8,
+          "comment": "Fast and reliable SSD for my OS and applications."
+        }
+      ]
+    },
+    // Storage device object 2 without reviews
+    {
+      "_id": { "$oid": "64c393fbdfde08a1c25f8938" },
+      "image": "https://example.com/storage2-image.jpg",
+      "productName": "Storage Device Model Y",
+      "category": "Storage Device",
+      "status": "In Stock",
+      "price": 119.99,
+      "description": "High-capacity HDD for mass storage.",
+      "keyFeatures": {
+        "brand": "Brand T",
+        "model": "Model T789",
+        "capacity": "2TB",
+        "interface": "SATA 6Gb/s",
+        "speed": "7200 RPM",
+        "cache": "64MB",
+        "formFactor": "3.5-inch",
+        "MTBF": "1 million hours",
+        "endurance": "240 TBW",
+        "encryption": "None",
+        "RGB": "No"
+      },
+      "individualRating": 4.2,
+      "averageRating": 4.1,
+      "reviews": []
+    }
+  ];
+  
+  const otherData = [
+    // Other component object 1 without reviews
+    {
+      "_id": { "$oid": "64c393fbdfde08a1c25f8939" },
+      "image": "https://example.com/other1-image.jpg",
+      "productName": "Other Component Model X",
+      "category": "Other Component",
+      "status": "In Stock",
+      "price": 49.99,
+      "description": "Generic component for system builds.",
+      "keyFeatures": {
+        "brand": "Brand O",
+        "model": "Model O123",
+        "feature1": "Feature X",
+        "feature2": "Feature Y",
+        "feature3": "Feature Z",
+        "RGB": "No"
+      },
+      "individualRating": 3.8,
+      "averageRating": 3.7,
+      "reviews": []
+    }
+  ];
+  
