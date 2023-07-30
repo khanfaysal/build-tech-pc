@@ -1,5 +1,5 @@
 import RootLayout from "@/components/Layout/RootLayout";
-// import Image from "next/image";
+import Image from "next/image";
 
 const ProductsDetailsPage = ({ products }) => {
   console.log("products", products)
@@ -20,15 +20,15 @@ const ProductsDetailsPage = ({ products }) => {
       <div className="p-4 md:w-10/12 mx-auto">
         <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden flex flex-col md:flex-row">
           {/* Product Image (Left Side) */}
-          <div className="md:w-6/12">
-            {/* <Image
-        src={image}
-        alt={productName}
-        width={250}
-        height={250}
-        layout="responsive"
-      /> */}
-            <h2>fdfdsf</h2>
+          <div className="md:w-6/12 flex items-center justify-center">
+            <div className="relative w-full h-0 md:h-full pb-[100%] md:pb-0">
+              <Image
+                src={image}
+                alt={productName}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
           </div>
 
           {/* Product Details (Right Side) */}

@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const AllProducts = ({ allProducts }) => {
   // State to hold the shuffled products
@@ -33,16 +34,21 @@ const AllProducts = ({ allProducts }) => {
               category,
               status,
               price,
-              description,
-              keyFeatures,
+            
               individualRating,
-              averageRating,
-              reviews,
+             
             }) => (
               <div className="p-4 md:w-1/3" key={_id}>
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                   {/* Render product image */}
-                  <h1>image</h1>
+                  <div className="h-48 md:h-64 relative overflow-hidden">
+                    <Image
+                      src={image}
+                      alt={productName}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
                   <div className="p-6">
                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                       {category}
