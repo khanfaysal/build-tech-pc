@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -34,9 +33,8 @@ const AllProducts = ({ allProducts }) => {
               category,
               status,
               price,
-            
+
               individualRating,
-             
             }) => (
               <div className="p-4 md:w-1/3" key={_id}>
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -61,40 +59,13 @@ const AllProducts = ({ allProducts }) => {
                         ${price.toFixed(2)}
                       </p>
                     </div>
-                    {/* Render product description and key features if needed */}
-                    {/* <div className="mb-4">
-                      <h3 className="text-gray-600 font-medium mb-2">
-                        Key Features:
-                      </h3>
-                      <ul className="list-disc pl-6">
-                        {Object.entries(keyFeatures).map(([key, value]) => (
-                          <li key={key}>
-                            {key}: {value}
-                          </li>
-                        ))}
-                      </ul>
-                    </div> */}
+
                     <div className="flex items-center mb-4">
                       <span className="text-indigo-500 inline-flex items-center mr-3">
                         Individual Rating: {individualRating}
                       </span>
-                      {/* <span className="text-gray-400 inline-flex items-center">
-                        Average Rating: {averageRating}
-                      </span> */}
                     </div>
-                    {/* Render product reviews if needed */}
-                    {/* <h3 className="text-gray-600 font-medium mb-2">Reviews:</h3>
-                    {reviews.map((review, index) => (
-                      <div key={index} className="mb-4">
-                        <p className="text-gray-800">
-                          Username: {review.username}
-                        </p>
-                        <p className="text-gray-800">
-                          Rating: {review.rating} out of 5 stars
-                        </p>
-                        <p className="text-gray-800">Comment: {review.comment}</p>
-                      </div>
-                    ))} */}
+
                     <p
                       className={`text-sm ${
                         status === "In Stock"

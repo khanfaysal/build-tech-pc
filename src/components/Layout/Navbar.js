@@ -26,7 +26,7 @@ const Navbar = () => {
         { name: "Power Supply", link: "Power Supply Unit" },
         { name: "Storage Device", link: "Storage Device" },
         { name: "Monitor", link: "Monitor" },
-        { name: "Others", link: "Others" },
+        { name: "Other Component", link: "Others" },
       ],
     },
   ];
@@ -140,7 +140,7 @@ const Navbar = () => {
 
             <button
               onClick={HandlePcBuilderRedirect}
-              className="inline-flex items-center bg-[#6d90e9] text-white shadow-sm border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0 hover:text-[#6d90e9] transition-colors duration-300 ease-in-out"
+              className="inline-flex items-center bg-[#6d90e9] text-white shadow-sm border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0 hover:text-white md:hover:bg-indigo-400 transition-colors duration-300 ease-in-out"
             >
               PC Builder
             </button>
