@@ -2,20 +2,23 @@ import RootLayout from "@/components/Layout/RootLayout";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-const ProductCategory = ({ allProducts }) => {
-  const router = useRouter();
-  const category = router.query.category;
+const ProductCategoryChoose = ({ allProducts }) => {
+  console.log(allProducts, "all products from choose");
 
-  const selectedCategory = category;
-  const filteredProducts = allProducts?.data?.filter(
-    (product) => product.category === selectedCategory
+  const router = useRouter();
+  const chooseCategory = router.query.category;
+  console.log(chooseCategory, "choose category");
+  const selectedChooseCategory = chooseCategory;
+
+  const chooseProducts = allProducts?.data?.filter(
+    (product) => product.category === selectedChooseCategory
   );
 
   return (
     <section className="text-gray-600 body-font py-10">
       <div className="container px-5 mx-auto">
         <div className="flex flex-wrap -m-4">
-          {filteredProducts.map(
+          {chooseProducts.map(
             ({
               _id,
               image,
@@ -23,11 +26,8 @@ const ProductCategory = ({ allProducts }) => {
               category,
               status,
               price,
-              description,
-              keyFeatures,
               individualRating,
               averageRating,
-              reviews,
             }) => (
               <div className="p-4 md:w-1/3" key={_id}>
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden flex flex-col">
@@ -49,19 +49,7 @@ const ProductCategory = ({ allProducts }) => {
                     <p className="text-lg font-bold text-gray-900">
                       ${price.toFixed(2)}
                     </p>
-                    <p className="leading-relaxed mb-3">{description}</p>
-                    <div className="mb-4">
-                      <h3 className="text-gray-600 font-medium mb-2">
-                        Key Features:
-                      </h3>
-                      <ul className="list-disc pl-6">
-                        {Object.entries(keyFeatures).map(([key, value]) => (
-                          <li key={key}>
-                            {key}: {value}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+
                     <div className="flex items-center mb-4">
                       <span className="text-indigo-500 inline-flex items-center mr-3">
                         Individual Rating: {individualRating}
@@ -70,20 +58,7 @@ const ProductCategory = ({ allProducts }) => {
                         Average Rating: {averageRating}
                       </span>
                     </div>
-                    <h3 className="text-gray-600 font-medium mb-2">Reviews:</h3>
-                    {reviews.map((review, index) => (
-                      <div key={index} className="mb-4">
-                        <p className="text-gray-800">
-                          Username: {review.username}
-                        </p>
-                        <p className="text-gray-800">
-                          Rating: {review.rating} out of 5 stars
-                        </p>
-                        <p className="text-gray-800">
-                          Comment: {review.comment}
-                        </p>
-                      </div>
-                    ))}
+
                     <p
                       className={`text-sm ${
                         status === "In Stock"
@@ -104,28 +79,19 @@ const ProductCategory = ({ allProducts }) => {
   );
 };
 
-export default ProductCategory;
+export default ProductCategoryChoose;
 
-ProductCategory.getLayout = function getLayout(page) {
+ProductCategoryChoose.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
-export const getStaticProps = async () => {
-  try {
-    const res = await fetch("http://localhost:5000/products");
-    const data = await res.json();
-
-    return {
-      props: {
-        allProducts: data,
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching static props:", error);
-    return {
-      props: {
-        allProducts: null,
-      },
-    };
-  }
+export const getServerSideProps = async () => {
+  const res = await fetch("http://localhost:5000/products");
+  const data = await res.json();
+  return {
+    props: {
+      allProducts: data,
+    },
+    // revalidate: 10,
+  };
 };

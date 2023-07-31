@@ -31,7 +31,7 @@ const Navbar = () => {
     },
   ];
 
-  const NavItem = ({ item, onClick }) => {
+  const NavItem = ({ item}) => {
     const [isSubMenuOpen, setSubMenuOpen] = useState(false);
 
     const handleSubMenuToggle = () => {
@@ -134,7 +134,7 @@ const Navbar = () => {
           >
             <nav className="py-4 md:ml-auto md:flex flex-wrap items-center text-base justify-center">
               {navItems.map((item, index) => (
-                <NavItem key={index} item={item} onClick={() => handleNavItemClicked(item)} />
+                <NavItem key={index} item={item} />
               ))}
             </nav>
 
