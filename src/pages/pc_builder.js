@@ -55,6 +55,9 @@ const PcBuilderPage = () => {
 
   const handleCreatePC = () => {
    alert("Successfully build your new computer");
+   router.push({
+    pathname: "/",
+  });
   };
 
   return (
