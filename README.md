@@ -1,38 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Project Name: Build Tech PC - Custom PC Builder Application
 
-## Getting Started
+Description: Build Tech PC is a user-friendly web application designed for PC enthusiasts and tech-savvy users. The platform allows users to explore a wide range of PC components, view detailed specifications, and create their dream PC builds.
 
-First, run the development server:
+Key Features:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Comprehensive Component Showcase: Users can browse through a vast collection of PC components, including processors, motherboards, RAM, storage devices, power supplies, monitors, and more. Each component is accompanied by detailed information, such as specifications, features, and prices.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Detailed Component View: When users click on a specific component, they can access a comprehensive overview displaying all the necessary details. This includes technical specifications, compatibility information, customer reviews, and expert ratings.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+3. Custom PC Builder: For users who wish to create their custom PCs, the platform offers an intuitive custom PC builder feature. By selecting components from the extensive database, users can design their perfect PC configurations tailored to their needs and preferences.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+4. PC Build Validation: Before finalizing their PC builds, the application ensures that users have chosen a minimum of five essential components. If the user has not selected the required number of components, an alert will prompt them to add more components to proceed.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+5. Expense Calculation: Once users have successfully built their custom PC configuration, the application calculates the total expense based on the selected components' prices. Users can view the total cost of their PC build, helping them plan their budget accordingly.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+With Build Tech PC, users can unleash their creativity, design cutting-edge PCs, and make informed decisions about their tech investments. Whether they are gaming enthusiasts, content creators, or professionals seeking high-performance computing, this application provides a seamless and immersive experience to bring their PC visions to life.

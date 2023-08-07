@@ -1,18 +1,29 @@
 import RootLayout from "@/components/Layout/RootLayout";
+import { addToBuilder, setProductChoose } from "@/redux/features/products/productSlice";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useDispatch} from "react-redux";
 
 const ProductCategoryChoose = ({ allProducts }) => {
-  console.log(allProducts, "all products from choose");
+  console.log(allProducts, "")
 
   const router = useRouter();
+  const dispatch = useDispatch();
   const chooseCategory = router.query.category;
-  console.log(chooseCategory, "choose category");
   const selectedChooseCategory = chooseCategory;
 
   const chooseProducts = allProducts?.data?.filter(
     (product) => product.category === selectedChooseCategory
   );
+
+  const handleAddToBuilder = (selectedProduct) => {
+    dispatch(setProductChoose(selectedProduct));
+    
+    console.log(selectedProduct, "slected from useselector" )
+   router.push({
+    pathname: "/pc_builder",
+  });
+  };
 
   return (
     <section className="text-gray-600 body-font py-10">
@@ -60,7 +71,7 @@ const ProductCategoryChoose = ({ allProducts }) => {
                     </div>
 
                     <p
-                      className={`text-sm ${
+                      className={`text-sm pb-4 ${
                         status === "In Stock"
                           ? "text-green-500"
                           : "text-red-500"
@@ -68,6 +79,21 @@ const ProductCategoryChoose = ({ allProducts }) => {
                     >
                       {status}
                     </p>
+                    <button
+                      onClick={() => handleAddToBuilder({
+                        _id,
+                        image,
+                        productName,
+                        category,
+                        status,
+                        price,
+                        individualRating,
+                        averageRating,
+                      })}
+                      className=" flex-shrink-0 text-[#6d90e9] border border-[#6d90e9] py-1 px-5 focus:outline-none hover:bg-indigo-400 hover:text-white rounded text-base mt-10 sm:mt-0 transition-all duration-200"
+                    >
+                      Add To Builder
+                    </button>
                   </div>
                 </div>
               </div>
