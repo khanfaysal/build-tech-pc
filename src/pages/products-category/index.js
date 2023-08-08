@@ -7,7 +7,7 @@ const ProductCategory = ({ allProducts }) => {
   const category = router.query.category;
 
   const selectedCategory = category;
-  const filteredProducts = allProducts?.data?.filter(
+  const filteredProducts = allProducts?.filter(
     (product) => product.category === selectedCategory
   );
 
@@ -111,22 +111,13 @@ ProductCategory.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  try {
-    const res = await fetch("http://localhost:5000/products");
-    const data = await res.json();
-    console.log(data, "all data")
+
+    const res = await fetch("https://build-tech-pc-server.vercel.app/products");
+    const {data }= await res.json();
 
     return {
       props: {
         allProducts: data,
       },
     };
-  } catch (error) {
-    console.error("Error fetching static props:", error);
-    return {
-      props: {
-        allProducts: null,
-      },
-    };
-  }
 };
