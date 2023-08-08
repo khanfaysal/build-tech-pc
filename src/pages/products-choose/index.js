@@ -79,7 +79,9 @@ const ProductCategoryChoose = ({ allProducts }) => {
                     >
                       {status}
                     </p>
-                    <button
+                    {
+                      status !== "Out of Stock" && 
+                      <button
                       onClick={() => handleAddToBuilder({
                         _id,
                         image,
@@ -94,6 +96,7 @@ const ProductCategoryChoose = ({ allProducts }) => {
                     >
                       Add To Builder
                     </button>
+                    }
                   </div>
                 </div>
               </div>
