@@ -2,33 +2,45 @@ import RootLayout from "@/components/Layout/RootLayout";
 import { addToBuilder, setProductChoose } from "@/redux/features/products/productSlice";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useDispatch} from "react-redux";
 
 const ProductCategoryChoose = ({ allProducts }) => {
-  console.log(allProducts, "")
 
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const dispatch = useDispatch();
   const chooseCategory = router.query.category;
   const selectedChooseCategory = chooseCategory;
 
+  useEffect(() => {
+    if (allProducts) {
+      setLoading(false);
+    }
+  }, [allProducts]);
+  
+
   const chooseProducts = allProducts?.data?.filter(
     (product) => product.category === selectedChooseCategory
   );
 
+
   const handleAddToBuilder = (selectedProduct) => {
     dispatch(setProductChoose(selectedProduct));
-    
-    console.log(selectedProduct, "slected from useselector" )
-   router.push({
+    router.push({
     pathname: "/pc_builder",
   });
   };
 
+ 
+
   return (
     <section className="text-gray-600 body-font py-10">
       <div className="container px-5 mx-auto">
-        <div className="flex flex-wrap -m-4">
+        {loading ? (
+          <p className="text-lg text-gray-500">Loading...</p>
+        ): (
+          <div className="flex flex-wrap -m-4">
           {chooseProducts.map(
             ({
               _id,
@@ -103,6 +115,7 @@ const ProductCategoryChoose = ({ allProducts }) => {
             )
           )}
         </div>
+        )}
       </div>
     </section>
   );
@@ -115,12 +128,22 @@ ProductCategoryChoose.getLayout = function getLayout(page) {
 };
 
 export const getServerSideProps = async () => {
-  const res = await fetch("https://build-tech-pc-server.vercel.app/products");
-  const data = await res.json();
-  return {
-    props: {
-      allProducts: data,
-    },
-    // revalidate: 10,
-  };
+  try {
+    const res = await fetch("https://build-tech-pc-server.vercel.app/products");
+    const data = await res.json();
+    return {
+      props: {
+        allProducts: data,
+      },
+      // revalidate: 10,
+    };
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return {
+      props: {
+        allProducts: null,
+      },
+    };
+  }
 };
+

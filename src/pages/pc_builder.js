@@ -11,7 +11,8 @@ import Monitor from "@/images/monitor.png";
 import RootLayout from "@/components/Layout/RootLayout";
 import { useRouter } from "next/router";
 import { removeProductChoose } from "@/redux/features/products/productSlice";
-// import { useDispatch} from "react-redux";
+import { useState } from "react";
+
 
 const PcBuilderPage = () => {
   const router = useRouter();
